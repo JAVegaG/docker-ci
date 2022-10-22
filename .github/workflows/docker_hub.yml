@@ -4,12 +4,12 @@ run-name: ${{ github.actor }} is Pushing the Docker Image to Docker Hub 🚀
 
 on:
   pull_request:
-    types:
-      - closed
     branches:
       - main
       - develop
   push:
+    branches:
+      - develop
     tags:
       - v*
   workflow_dispatch:
