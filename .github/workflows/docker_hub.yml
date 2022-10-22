@@ -8,6 +8,9 @@ on:
       - closed
     branches:
       - main
+  push:
+    tags:
+      - v*
 
 jobs:
   docker:
@@ -23,10 +26,12 @@ jobs:
         with:
           # list of Docker images to use as base name for tags
           images: |
-            ${{ secrets.GH_USERNAME }}/app
+            ${{ secrets.DOCKERHUB_USERNAME }}/app
             ghcr.io/${{ github.repository	 }} 
           # generate Docker tags based on the following events/attributes
           tags: |
+            type=ref,event=branch
+            type=ref,event=pr
             type=semver,pattern={{version}}
       -
         name: Set up QEMU
