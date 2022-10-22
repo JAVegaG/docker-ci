@@ -8,6 +8,7 @@ on:
       - closed
     branches:
       - main
+      - develop
   push:
     tags:
       - v*
@@ -27,7 +28,7 @@ jobs:
         with:
           # list of Docker images to use as base name for tags
           images: |
-            ${{ secrets.DOCKERHUB_USERNAME }}/app
+            julianvega/react-project
             ghcr.io/${{ github.repository	 }} 
           # generate Docker tags based on the following events/attributes
           tags: |
