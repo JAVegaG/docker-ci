@@ -15,7 +15,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  check-repository:
+  docker:
     runs-on: ubuntu-latest
     steps:
       -
@@ -35,10 +35,6 @@ jobs:
             type=ref,event=branch
             type=ref,event=pr
             type=semver,pattern={{version}}
-  set-docker:
-    if: github.event_name != 'pull_request'
-    runs-on: ubuntu-latest
-    steps:
       -
         name: Set up QEMU
         uses: docker/setup-qemu-action@v2
@@ -58,14 +54,11 @@ jobs:
           registry: ghcr.io
           username: ${{ github.repository_owner }}
           password: ${{ secrets.GH_TOKEN }}
-  build-and-push:
-    runs-on: ubuntu-latest
-      steps:
       -
         name: Build and push
         uses: docker/build-push-action@v3
         with:
           context: .
-          push: ${{ github.event_name != 'pull_request' }}
+          push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
