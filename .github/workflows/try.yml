@@ -11,9 +11,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       -
-       uses: actions/checkout@v
        name: running test
-       with:
-         DH_USER: ${{ secrets.DOCKERHUB_USERNAME }}
        run: |
-         echo "$DH_USER"
+         echo "${{ secrets.DOCKERHUB_USERNAME}}"
