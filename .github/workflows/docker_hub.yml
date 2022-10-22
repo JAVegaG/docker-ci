@@ -60,7 +60,7 @@ jobs:
           password: ${{ secrets.GH_TOKEN }}
   build-and-push:
     runs-on: ubuntu-latest
-      steps:
+    steps:
       -
         name: Build and push
         uses: docker/build-push-action@v3
