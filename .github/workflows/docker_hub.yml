@@ -26,7 +26,7 @@ jobs:
             ${{ secrets.GH_USERNAME }}/app
             ghcr.io/${{ github.repository	 }} 
           # generate Docker tags based on the following events/attributes
-          tags: 
+          tags: |
             type=semver,pattern={{version}}
       -
         name: Set up QEMU
