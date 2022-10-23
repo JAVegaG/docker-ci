@@ -12,7 +12,7 @@ on:
       - develop
     tags:
       - v*
-  workflow_dispatch:
+#  workflow_dispatch:
 
 jobs:
   docker:
@@ -32,8 +32,8 @@ jobs:
             ghcr.io/${{ github.repository }} 
           # generate Docker tags based on the following events/attributes
           tags: |
-            type=ref,event=branch
-            type=ref,event=pr
+            type=ref,event=branch,suffix=-{{sha}}
+            type=ref,event=pr,suffix=-{{base_ref}}
             type=semver,pattern={{version}}
       -
         name: Set up QEMU
