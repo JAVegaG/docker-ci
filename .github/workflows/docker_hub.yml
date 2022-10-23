@@ -4,10 +4,15 @@ run-name: ${{ github.actor }} is Pushing the Docker Image to Docker Hub 🚀
 
 on:
   pull_request:
-    types:
-      - closed
     branches:
       - main
+      - develop
+  push:
+    branches:
+      - develop
+    tags:
+      - v*
+#  workflow_dispatch:
 
 jobs:
   docker:
@@ -23,10 +28,12 @@ jobs:
         with:
           # list of Docker images to use as base name for tags
           images: |
-            ${{ secrets.GH_USERNAME }}/app
-            ghcr.io/${{ github.repository	 }} 
+            julianvega/react-project
+            ghcr.io/${{ github.repository }} 
           # generate Docker tags based on the following events/attributes
           tags: |
+            type=ref,event=branch,suffix=-{{sha}}
+            type=ref,event=pr,suffix=-{{base_ref}}
             type=semver,pattern={{version}}
       -
         name: Set up QEMU
@@ -36,12 +43,14 @@ jobs:
         uses: docker/setup-buildx-action@v2
       -
         name: Login to Docker Hub
+        if: github.event_name != 'pull_request'
         uses: docker/login-action@v2
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       -
         name: Login to GHCR
+        if: github.event_name != 'pull_request'
         uses: docker/login-action@v2
         with:
           registry: ghcr.io
@@ -52,6 +61,6 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           context: .
-          push: true
+          push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
