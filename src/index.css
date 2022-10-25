@@ -1,13 +1,21 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  /* background: #bebcbc; */
+  background-image: url("https://res.cloudinary.com/g5-assets-cld/image/upload/x_12,y_81,h_983,w_1787,c_crop/q_auto,f_auto,fl_lossy,g_center,h_1100,w_2000/g5/g5-c-i7yxybw5-mission-rock-single/g5-cl-iap27qrg-mountain-view-apartment-homes/uploads/GettyImages-621365612_pvphnb.jpg");
+  background-repeat: no-repeat;
+  background-position: top;
+  background-attachment: fixed;
+  /* opacity: 85%; */
+  /* background-size: 100% 50%; */
+  background-size: cover;
+  /* background-clip: content-box ; */
+  color: #000000;
+  font-family: 'Oswald', sans-serif;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+#root {
+  margin: 0 24px;
+  position: relative;
+  min-height: 100vh;
 }

@@ -1,0 +1,17 @@
+ul {
+    margin: 48px;
+    padding: 0 0 56px 0;
+    list-style: none;
+}
+
+.msg {
+    background: rgba(250, 250, 250, 0.75);
+    border: 4px solid rgb(87, 58, 255);
+    padding: 10px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 24px;
+    border-radius: 25px;
+}
