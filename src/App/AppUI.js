@@ -16,8 +16,8 @@ function AppUI() {
         error,
         loading,
         searchedToDoTasks,
-        completeToDoTasks,
-        deleteToDoTasks,
+        completeToDoTask,
+        deleteToDoTask,
         openModal,
         setOpenModal
     } = React.useContext(ToDoContext);
@@ -37,8 +37,8 @@ function AppUI() {
                         key={task.text}
                         text={task.text}
                         completed={task.completed}
-                        onComplete={() => completeToDoTasks(task.text)}
-                        onDelete={() => deleteToDoTasks(task.text)}
+                        onComplete={() => completeToDoTask(task.text)}
+                        onDelete={() => deleteToDoTask(task.text)}
                     />
                 ))};
             </ToDoList>

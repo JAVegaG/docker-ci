@@ -8,7 +8,7 @@ function ToDoForm() {
 
     const {
         addToDoTask,
-        SetOpenModal
+        setOpenModal,
     } = React.useContext(ToDoContext);
 
     const onChange = (event) => {
@@ -16,13 +16,13 @@ function ToDoForm() {
     };
 
     const onCancel = () => {
-        SetOpenModal(false);
+        setOpenModal(false);
     };
 
     const onSubmit = (event) => {
         event.preventDefault();
         addToDoTask(newToDoTask);
-        SetOpenModal(false);
+        setOpenModal(false);
         setNewToDoTask('');
     }
 
