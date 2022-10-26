@@ -71,4 +71,4 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 ## Automatically Deploy the Static Content
 
-This was approached using GitHub actions and a [docker multi-stages strategy](./Dockerfile). First, the GitHub action is triggered on a _push_ to the _develop_ branch or on a _pull_request_ completed on branches _main_ or _develop_. Afterward, a **_node image_** is used to build the app from the version control repository, then the resulting files are loaded to an **_Apache image_** that would deploy the content as an HTTP Server (["httpd"](https://httpd.apache.org/)).
+This was approached using GitHub actions and a [docker multi-stages strategy](./Dockerfile). First, the GitHub action is triggered on a `_push_` to the _develop_ branch or on a ` _pull_request_` completed on branches _main_ or _develop_. Afterward, a **_node image_** is used to build the app from the version control repository, then the resulting files are loaded to an **_Apache image_** that would deploy the content as an HTTP Server (["httpd"](https://httpd.apache.org/)).
